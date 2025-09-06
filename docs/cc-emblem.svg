@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Community Credits emblem">
+  <circle cx="128" cy="128" r="118" fill="#2F6B3E"/>
+  <path d="M 60 150 C 70 90, 140 70, 200 100 C 210 125, 150 180, 90 190 C 80 175, 70 165, 60 150 Z" fill="#5B9368"/>
+  <path d="M 78 170 C 120 150, 150 140, 190 118" stroke="#FFFCF7" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M 112 162 L 138 148" stroke="#FFFCF7" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M 98 178 L 120 166" stroke="#FFFCF7" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

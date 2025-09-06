@@ -5,6 +5,13 @@
   <title>Community Credits — Food-Only Member Wallet for Local Farms</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Community Credits: a prepaid, food-only wallet that powers local farms and co-ops with member support, transparent reserves, and simple governance." />
+
+  <!-- Favicons (same directory as this file) -->
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./favicon-192.png">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+
   <style>
     /* ===== Theme (earth/soil) ===== */
     :root{
@@ -32,13 +39,15 @@
     a:hover{text-decoration:underline}
     .wrap{max-width:var(--maxw); margin:0 auto; padding: 24px}
     header{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
-    .brand{display:flex; align-items:center; gap:12px}
-    .logo{
-      width:44px; height:44px; border-radius:14px; background:var(--card);
-      border: 1px solid var(--border); box-shadow: var(--shadow);
-      display:grid; place-items:center; position:relative; overflow:hidden;
+    .brand{display:flex; align-items:center; gap:14px; min-width:0}
+    .logo-img{
+      width:44px; height:44px; border-radius:14px;
+      background:var(--card); border:1px solid var(--border); box-shadow:var(--shadow);
+      padding:6px; object-fit:contain; display:block;
     }
-    .logo svg{width:26px; height:26px}
+    .brand-text {min-width:0}
+    .brand-title{font-size:18px; font-weight:700; white-space:nowrap}
+    .brand-sub{color:var(--muted); font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
     nav a{margin-left:18px; color:var(--muted)}
     nav a:hover{color:var(--leaf)}
 
@@ -58,9 +67,7 @@
     }
     .gloss{padding:22px}
     .bullets{margin:12px 0 4px 18px; color:var(--muted)}
-    .scroll-down{
-      margin-top:20px; display:inline-flex; align-items:center; gap:10px; color:var(--muted); cursor:pointer
-    }
+    .scroll-down{ margin-top:20px; display:inline-flex; align-items:center; gap:10px; color:var(--muted); cursor:pointer }
     .scroll-down svg{width:18px; height:18px}
 
     /* Sections */
@@ -100,6 +107,7 @@
 
     @media (max-width: 980px){
       .hero, .inquiry, .grid-3, .steps, .row{grid-template-columns:1fr}
+      .brand-sub{display:none}
     }
     @media (prefers-reduced-motion:no-preference){
       .btn-primary{transition: transform .08s ease}
@@ -113,16 +121,12 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="logo" aria-hidden="true" title="Community Credits">
-          <!-- Simple leaf mark -->
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M20 7c-5.5 0-9.5 2.5-12 7 1-6 5-10 12-12-1 1.5-1.8 3-0 5z" fill="#2F6B3E"/>
-            <path d="M5 19c4-1 7-4 9-8" stroke="#6E5B46" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div>
-          <strong style="font-size:18px">Community Credits</strong><br>
-          <span class="muted" style="font-size:13px">A food-only member wallet for local farms & co-ops</span>
+        <!-- Using your emblem SVG from the same folder -->
+        <img src="./cc-emblem.svg" alt="Community Credits emblem" class="logo-img" width="44" height="44" loading="eager">
+
+        <div class="brand-text">
+          <div class="brand-title">Community Credits</div>
+          <div class="brand-sub">A food-only member wallet for local farms & co-ops</div>
         </div>
       </div>
       <nav>
@@ -285,7 +289,7 @@
 
   <script>
     // ------- CONFIG -------
-    // Obfuscated recipient email (Base64). Replace this with a forwarding alias later if you like.
+    // Obfuscated recipient email (Base64). Replace with a forwarding alias later if desired.
     const ENCODED_EMAIL = "amRlY2s4OEBnbWFpbC5jb20="; // "jdeck88@gmail.com"
     // ----------------------
 
