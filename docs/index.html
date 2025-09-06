@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Community Credits: a prepaid, food-only wallet that powers local farms and co-ops with member support, transparent reserves, and simple governance." />
 
-  <!-- Favicons (same directory as this file) -->
+  <!-- Favicons (same directory) -->
   <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="./favicon-192.png">
@@ -28,9 +28,9 @@
       --maxw: 1060px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:
-      radial-gradient(900px 600px at 80% -10%, rgba(184,110,80,.10), transparent 60%),
-      linear-gradient(180deg, var(--bg) 0%, var(--bg-accent) 100%);
+    html,body{
+      margin:0; padding:0;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-accent) 100%);
       color:var(--ink);
       font: 17px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
       -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
@@ -38,49 +38,60 @@
     a{color:var(--leaf); text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:var(--maxw); margin:0 auto; padding: 24px}
-    header{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
-    .brand{display:flex; align-items:center; gap:14px; min-width:0}
+
+    /* Header (no nav) */
+    header{display:flex; align-items:center; justify-content:flex-start; gap:14px; padding:12px 0}
     .logo-img{
-      width:44px; height:44px; border-radius:14px;
+      width:48px; height:48px; border-radius:14px;
       background:var(--card); border:1px solid var(--border); box-shadow:var(--shadow);
       padding:6px; object-fit:contain; display:block;
     }
-    .brand-text {min-width:0}
-    .brand-title{font-size:18px; font-weight:700; white-space:nowrap}
-    .brand-sub{color:var(--muted); font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-    nav a{margin-left:18px; color:var(--muted)}
-    nav a:hover{color:var(--leaf)}
+    .brand-title{font-size:20px; font-weight:800}
+    .brand-sub{color:var(--muted); font-size:13px}
 
-    /* Hero */
-    .hero{padding: 48px 0 28px; display:grid; grid-template-columns: 1.2fr 1fr; gap:36px; align-items:center}
-    h1{font-size: clamp(28px, 4vw, 54px); line-height:1.08; margin: 0 0 10px}
-    .subtitle{color:var(--muted); font-size: clamp(15px, 1.6vw, 19px); margin: 6px 0 22px}
-    .cta{display:flex; gap:12px; flex-wrap:wrap}
+    /* Hero: big, simple, full-bleed hills */
+    .hero-wrap{position:relative; overflow:hidden; background:
+      radial-gradient(900px 600px at 80% -10%, rgba(184,110,80,.10), transparent 60%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg-accent) 100%);
+    }
+    .hero{
+      min-height: 72vh;
+      display:grid; align-items:center;
+      padding: 40px 24px 24px;
+    }
+    .hero-inner{max-width:var(--maxw); margin:0 auto; display:grid; gap:16px}
+    .hero h1{font-size: clamp(34px, 5vw, 62px); line-height:1.06; margin: 0 0 6px}
+    .subtitle{color:var(--muted); font-size: clamp(16px, 1.8vw, 20px); margin: 4px 0 14px}
+    .pill{display:inline-flex; gap:8px; align-items:center; padding:6px 12px; border-radius:999px; background:#EEF5EC; color:#326a40; border:1px solid #d6e6d4; font-weight:600; letter-spacing:.2px; width:max-content}
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:6px}
     .btn{appearance:none; border:1px solid transparent; border-radius:999px; padding:13px 18px; font-weight:700; cursor:pointer; box-shadow:var(--shadow)}
     .btn-primary{background: linear-gradient(135deg, #2F6B3E 0%, #3f8c50 100%); color:#fff}
     .btn-ghost{background: transparent; color:var(--leaf); border-color: #cdd6c7}
-    .pill{display:inline-flex; gap:8px; align-items:center; padding:6px 12px; border-radius:999px; background:#EEF5EC; color:#326a40; border:1px solid #d6e6d4; font-weight:600; letter-spacing:.2px}
 
-    .hero-visual{position:relative}
+    /* Decorative hills behind hero text */
+    .hills{
+      position:absolute; left:50%; transform:translateX(-50%);
+      bottom:-6px; width:1400px; max-width:100%;
+      opacity:.65; filter: drop-shadow(0 8px 24px rgba(46,38,27,.08));
+      pointer-events:none;
+    }
+
+    /* Sections */
+    section{padding: 36px 0}
+    .section-title{font-size: 24px; margin:0 0 8px}
+    .muted{color:var(--muted)}
+
+    /* Three quick points (lighter content) */
+    .grid-3{display:grid; grid-template-columns: repeat(3,1fr); gap:18px}
     .card{
       background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
     }
-    .gloss{padding:22px}
-    .bullets{margin:12px 0 4px 18px; color:var(--muted)}
-    .scroll-down{ margin-top:20px; display:inline-flex; align-items:center; gap:10px; color:var(--muted); cursor:pointer }
-    .scroll-down svg{width:18px; height:18px}
-
-    /* Sections */
-    section{padding: 28px 0}
-    .section-title{font-size: 22px; margin:0 0 8px}
-    .muted{color:var(--muted)}
-    .grid-3{display:grid; grid-template-columns: repeat(3,1fr); gap:18px}
     .p-card{padding:18px}
 
     /* Steps */
     .steps{display:grid; grid-template-columns: repeat(3,1fr); gap:18px}
     .step{padding:20px}
-    .step .badge{width:36px; height:36px; border-radius:12px; background:#F1E7DA; color:#6B4B2F; font-weight:800; display:grid; place-items:center; border:1px solid var(--border); margin-bottom:8px}
+    .badge{width:36px; height:36px; border-radius:12px; background:#F1E7DA; color:#6B4B2F; font-weight:800; display:grid; place-items:center; border:1px solid var(--border); margin-bottom:8px}
 
     /* Inquiry */
     .inquiry{display:grid; grid-template-columns: 1.05fr 1fr; gap:20px; align-items:stretch}
@@ -97,85 +108,105 @@
     .success{background:#EEF5EC; border:1px solid #d6e6d4; color:#2F6B3E}
     .error{background:#FAEDEA; border:1px solid #E2B7A8; color:#A64E33}
 
-    footer{margin: 42px 0 12px; color:var(--muted); font-size:14px}
+    /* At a glance (moved to bottom) */
+    .glance{padding:22px}
+    .bullets{margin:12px 0 4px 18px; color:var(--muted)}
 
-    /* Decorative hill SVG behind the hero card */
-    .hills{
-      position:absolute; inset: -14px -14px auto auto; z-index:-1; opacity:.55;
-      filter: drop-shadow(0 8px 24px rgba(46,38,27,.08));
-    }
+    footer{margin: 32px 0 12px; color:var(--muted); font-size:14px}
 
     @media (max-width: 980px){
-      .hero, .inquiry, .grid-3, .steps, .row{grid-template-columns:1fr}
-      .brand-sub{display:none}
+      .row, .grid-3, .steps, .inquiry {grid-template-columns:1fr}
     }
     @media (prefers-reduced-motion:no-preference){
       .btn-primary{transition: transform .08s ease}
       .btn-primary:active{transform: translateY(1px)}
-      .scroll-down{transition: opacity .2s ease}
-      .scroll-down:hover{opacity:.8}
     }
+  /* Container matches your page max width */
+  .wrap {
+    max-width: 1060px; /* adjust if your site uses a different max */
+    margin: 0 auto;
+    padding: 16px 24px;
+  }
+
+  /* Header: center everything */
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 0 8px;
+  }
+
+  /* Stack logo + subtitle, centered */
+  .brand {
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Responsive logo: never overflow, scales down on mobile */
+  .brand-logo {
+    display: block;
+    width: min(100%, 720px); /* cap the visual size */
+    height: auto;
+    margin: 0 auto;
+  }
+
+  /* Subtitle: scales nicely across devices */
+  .brand-sub {
+    margin-top: 8px;
+    font-size: clamp(14px, 1.6vw, 18px);
+    line-height: 1.4;
+    color: #6E5B46; /* matches your tan theme */
+  }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <!-- Using your emblem SVG from the same folder -->
-        <img src="./cc-emblem.svg" alt="Community Credits emblem" class="logo-img" width="44" height="44" loading="eager">
 
-        <div class="brand-text">
-          <div class="brand-title">Community Credits</div>
-          <div class="brand-sub">A food-only member wallet for local farms & co-ops</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#learn">About</a>
-        <a href="#how">How it works</a>
-        <a href="#inquire">More info</a>
-      </nav>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero">
-      <div>
-        <span class="pill">Food-only • No cash-out • Transparent reserves</span>
+  <!-- HEADER (logo + name only) -->
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <!-- Remove fixed width attribute; let CSS control sizing -->
+      <img src="./community-credits-logo.png"
+           alt="Community Credits logo"
+           class="brand-logo"
+           loading="eager">
+    </div>
+  </header>
+</div>
+  <!-- BIG HERO BANNER -->
+  <div class="hero-wrap">
+    <div class="hero">
+      <div class="hero-inner">
         <h1>Fuel your local food system with a simple <em>account with benefits</em>.</h1>
         <p class="subtitle">Members add credits. They spend them on local food. Farms gain stable, trackable cash flow—backed by a clear reserve policy.</p>
         <div class="cta">
           <a class="btn btn-primary" href="#inquire">Request more info</a>
           <a class="btn btn-ghost" href="#learn">Scroll to learn more ↓</a>
         </div>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
       </div>
-      <div class="hero-visual">
-        <svg class="hills" width="360" height="240" viewBox="0 0 360 240" aria-hidden="true">
-          <defs>
-            <linearGradient id="soil" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#EADCC8"/>
-              <stop offset="100%" stop-color="#DCC9B1"/>
-            </linearGradient>
-            <linearGradient id="leafy" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#3E7C4C"/>
-              <stop offset="100%" stop-color="#6E9D64"/>
-            </linearGradient>
-          </defs>
-          <path d="M0 160 Q 80 120, 180 150 T 360 150 L 360 240 L 0 240 Z" fill="url(#soil)"/>
-          <path d="M0 130 Q 90 90, 180 120 T 360 120 L 360 240 L 0 240 Z" fill="url(#leafy)" opacity=".10"/>
-        </svg>
-        <div class="card gloss">
-          <h3 style="margin:6px 0 6px">At a glance</h3>
-          <ul class="bullets">
-            <li>Member Wallet credits usable for <strong>eligible local food</strong> only</li>
-            <li><strong>80% target reserves</strong>, daily reconciliation, audit trail</li>
-            <li>Optional <strong>reserve-backed working-capital loans</strong> (bank-originated)</li>
-            <li>Optional plugins for POS/accounting when you’re ready</li>
-          </ul>
-          <p class="muted" style="font-size:13px; margin-top:10px">Not a bank account. Community Credits is a software platform and ledger. Funds are held by each farm/co-op in its own FBO (“for-benefit-of members”) bank account.</p>
-        </div>
-      </div>
-    </section>
+    </div>
+    <!-- decorative full-width hills -->
+    <svg class="hills" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="soil" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#EADCC8"/>
+          <stop offset="100%" stop-color="#DCC9B1"/>
+        </linearGradient>
+        <linearGradient id="leafy" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#3E7C4C"/>
+          <stop offset="100%" stop-color="#6E9D64"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="260" fill="transparent"/>
+      <path d="M0 180 Q 200 120, 450 160 T 1200 170 L 1200 260 L 0 260 Z" fill="url(#soil)"/>
+      <path d="M0 150 Q 240 80, 520 120 T 1200 130 L 1200 260 L 0 260 Z" fill="url(#leafy)" opacity=".10"/>
+    </svg>
+  </div>
 
-    <!-- LEARN / FEATURES -->
+  <!-- CONTENT (lighter) -->
+  <div class="wrap">
     <section id="learn">
       <h2 class="section-title">Why communities like it</h2>
       <p class="muted" style="max-width:760px">It’s simple for members, stabilizing for farms, and transparent for everyone. Credits are food-only, never cash—so dollars stay in the local food economy.</p>
@@ -195,7 +226,6 @@
       </div>
     </section>
 
-    <!-- HOW -->
     <section id="how">
       <h2 class="section-title">How it works</h2>
       <div class="steps" style="margin-top:12px">
@@ -217,7 +247,6 @@
       </div>
     </section>
 
-    <!-- INQUIRY -->
     <section id="inquire" class="inquiry">
       <div class="card" style="padding:24px">
         <h2 class="section-title">Bring Community Credits to your region</h2>
@@ -281,6 +310,20 @@
       </form>
     </section>
 
+    <!-- AT A GLANCE (moved here to the bottom) -->
+    <section aria-labelledby="glance">
+      <div class="card glance">
+        <h2 id="glance" class="section-title">At a glance</h2>
+        <ul class="bullets">
+          <li>Member Wallet credits usable for <strong>eligible local food</strong> only</li>
+          <li><strong>80% target reserves</strong>, daily reconciliation, audit trail</li>
+          <li>Optional <strong>reserve-backed working-capital loans</strong> (bank-originated; business-purpose)</li>
+          <li>Optional plugins for POS/accounting when you’re ready</li>
+        </ul>
+        <p class="muted" style="font-size:13px; margin-top:10px">Not a bank account. Community Credits is a software platform and ledger. Funds are held by each farm/co-op in its own FBO (“for-benefit-of members”) bank account.</p>
+      </div>
+    </section>
+
     <footer>
       <div>© <span id="year"></span> Community Credits — All rights reserved.</div>
       <div style="margin-top:4px" class="muted">Created by <strong>Killdeer Financial</strong>. Not a bank. Funds are held by participating farms/co-ops in their own FBO accounts.</div>
@@ -293,8 +336,7 @@
     const ENCODED_EMAIL = "amRlY2s4OEBnbWFpbC5jb20="; // "jdeck88@gmail.com"
     // ----------------------
 
-    const yearEl = document.getElementById('year');
-    yearEl.textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     const formEl = document.getElementById('inquiryForm');
     const successEl = document.getElementById('success');
