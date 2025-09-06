@@ -6,84 +6,133 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Community Credits: a prepaid, food-only wallet that powers local farms and co-ops with member support, transparent reserves, and simple governance." />
   <style>
+    /* ===== Theme (earth/soil) ===== */
     :root{
-      --bg: #0b1220;
-      --bg2:#0e1526;
-      --card:#121a2c;
-      --muted:#8aa0c4;
-      --text:#eaf1ff;
-      --accent:#5ee3a1;
-      --accent-2:#4cc2ff;
-      --danger:#ff6b6b;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --bg: #F4EFE7;          /* warm sand */
+      --bg-accent:#EDE4D6;    /* light tan */
+      --ink:#2E261B;          /* deep soil */
+      --muted:#6E5B46;        /* soft bark */
+      --leaf:#2F6B3E;         /* leafy green */
+      --terra:#B86E50;        /* terra cotta accent */
+      --card:#FFFCF7;         /* light card */
+      --border:#E2D6C6;
+      --shadow: 0 12px 30px rgba(46,38,27,.09);
       --radius: 18px;
+      --maxw: 1060px;
     }
-    * { box-sizing: border-box; }
-    html, body { margin:0; padding:0; background: radial-gradient(1200px 800px at 70% -10%, rgba(76,194,255,.15), transparent 60%), linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); color: var(--text); font: 16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif; }
-    a { color: var(--accent-2); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
-    header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding: 18px 0 6px; }
-    .brand { display:flex; align-items:center; gap:12px; }
-    .logo { width:40px; height:40px; border-radius:12px; background: conic-gradient(from 30deg, var(--accent), var(--accent-2)); box-shadow: var(--shadow); display:grid; place-items:center; color:#04121a; font-weight:900; letter-spacing:.5px; }
-    nav a { margin: 0 10px; opacity:.9 }
-    .hero { display:grid; grid-template-columns: 1.2fr 1fr; gap:28px; align-items:center; padding: 36px 0 10px; }
-    .hero h1 { font-size: clamp(28px, 3.4vw, 48px); margin:0 0 10px; line-height:1.1; }
-    .subtitle { color: var(--muted); font-size: clamp(14px, 1.5vw, 18px); margin-bottom:22px; }
-    .pill { display:inline-flex; gap:8px; align-items:center; background: rgba(94,227,161,.12); color: var(--accent); padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(94,227,161,.25); font-weight:600; letter-spacing:.2px; }
-    .cta { display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
-    .btn { appearance:none; border:0; border-radius: 999px; padding: 12px 18px; font-weight:700; cursor:pointer; box-shadow: var(--shadow); }
-    .btn-primary { background: linear-gradient(135deg, var(--accent) 0%, #70f0c1 100%); color:#032014; }
-    .btn-outline { background: transparent; border: 1px solid rgba(148,176,214,.35); color: var(--text); }
-    .card { background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02)); border: 1px solid rgba(148,176,214,.18); border-radius: var(--radius); box-shadow: var(--shadow); }
-    .features { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; margin: 28px 0; }
-    .feature { padding:18px; }
-    .feature h3 { margin:6px 0 6px; font-size:18px; }
-    .muted { color: var(--muted); }
-    .steps { display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin: 10px 0 32px; }
-    .step { padding:18px; }
-    .badge { width:30px; height:30px; border-radius:10px; display:grid; place-items:center; font-weight:800; color:#04121a; background: linear-gradient(135deg, var(--accent-2) 0%, #9ae0ff 100%); }
-    .inquiry { display:grid; grid-template-columns: 1.1fr 1fr; gap:18px; align-items:stretch; }
-    form { padding:20px; }
-    label { display:block; font-weight:600; margin: 10px 0 6px; }
-    input, select, textarea {
-      width:100%; padding:12px 12px; border-radius:12px; border:1px solid rgba(148,176,214,.35);
-      background: #0c1424; color: var(--text); outline: none;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:
+      radial-gradient(900px 600px at 80% -10%, rgba(184,110,80,.10), transparent 60%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg-accent) 100%);
+      color:var(--ink);
+      font: 17px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
     }
-    textarea { min-height: 120px; resize: vertical; }
-    .row { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
-    .hint { font-size:12px; color: var(--muted); margin-top:6px; }
-    .success, .error { padding:12px 14px; border-radius:12px; margin-top:12px; display:none; }
-    .success { background: rgba(94,227,161,.15); border: 1px solid rgba(94,227,161,.35); color: var(--accent); }
-    .error { background: rgba(255,107,107,.12); border: 1px solid rgba(255,107,107,.35); color: var(--danger); }
-    footer { margin: 36px 0 10px; color: var(--muted); font-size: 14px; }
-    .grid-soft { background: radial-gradient(1px 1px at 10px 10px, rgba(255,255,255,.06) 0, transparent 50px); background-size: 32px 32px; border-radius: var(--radius); }
-    .legal { font-size: 12px; color: #93a7cb; margin-top:10px; }
-    @media (max-width: 900px){
-      .hero, .inquiry { grid-template-columns: 1fr; }
-      .features { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: 1fr; }
-      .row { grid-template-columns: 1fr; }
+    a{color:var(--leaf); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--maxw); margin:0 auto; padding: 24px}
+    header{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{
+      width:44px; height:44px; border-radius:14px; background:var(--card);
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+      display:grid; place-items:center; position:relative; overflow:hidden;
+    }
+    .logo svg{width:26px; height:26px}
+    nav a{margin-left:18px; color:var(--muted)}
+    nav a:hover{color:var(--leaf)}
+
+    /* Hero */
+    .hero{padding: 48px 0 28px; display:grid; grid-template-columns: 1.2fr 1fr; gap:36px; align-items:center}
+    h1{font-size: clamp(28px, 4vw, 54px); line-height:1.08; margin: 0 0 10px}
+    .subtitle{color:var(--muted); font-size: clamp(15px, 1.6vw, 19px); margin: 6px 0 22px}
+    .cta{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{appearance:none; border:1px solid transparent; border-radius:999px; padding:13px 18px; font-weight:700; cursor:pointer; box-shadow:var(--shadow)}
+    .btn-primary{background: linear-gradient(135deg, #2F6B3E 0%, #3f8c50 100%); color:#fff}
+    .btn-ghost{background: transparent; color:var(--leaf); border-color: #cdd6c7}
+    .pill{display:inline-flex; gap:8px; align-items:center; padding:6px 12px; border-radius:999px; background:#EEF5EC; color:#326a40; border:1px solid #d6e6d4; font-weight:600; letter-spacing:.2px}
+
+    .hero-visual{position:relative}
+    .card{
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
+    }
+    .gloss{padding:22px}
+    .bullets{margin:12px 0 4px 18px; color:var(--muted)}
+    .scroll-down{
+      margin-top:20px; display:inline-flex; align-items:center; gap:10px; color:var(--muted); cursor:pointer
+    }
+    .scroll-down svg{width:18px; height:18px}
+
+    /* Sections */
+    section{padding: 28px 0}
+    .section-title{font-size: 22px; margin:0 0 8px}
+    .muted{color:var(--muted)}
+    .grid-3{display:grid; grid-template-columns: repeat(3,1fr); gap:18px}
+    .p-card{padding:18px}
+
+    /* Steps */
+    .steps{display:grid; grid-template-columns: repeat(3,1fr); gap:18px}
+    .step{padding:20px}
+    .step .badge{width:36px; height:36px; border-radius:12px; background:#F1E7DA; color:#6B4B2F; font-weight:800; display:grid; place-items:center; border:1px solid var(--border); margin-bottom:8px}
+
+    /* Inquiry */
+    .inquiry{display:grid; grid-template-columns: 1.05fr 1fr; gap:20px; align-items:stretch}
+    form{padding:20px}
+    label{display:block; font-weight:600; margin: 10px 0 6px}
+    input, select, textarea{
+      width:100%; padding:12px 12px; border-radius:12px; border:1px solid var(--border); background:#FAF6EF;
+      color:var(--ink); outline:none;
+    }
+    textarea{min-height:120px; resize:vertical}
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    .hint{font-size:12px; color:var(--muted); margin-top:6px}
+    .success,.error{padding:12px 14px; border-radius:12px; margin-top:12px; display:none}
+    .success{background:#EEF5EC; border:1px solid #d6e6d4; color:#2F6B3E}
+    .error{background:#FAEDEA; border:1px solid #E2B7A8; color:#A64E33}
+
+    footer{margin: 42px 0 12px; color:var(--muted); font-size:14px}
+
+    /* Decorative hill SVG behind the hero card */
+    .hills{
+      position:absolute; inset: -14px -14px auto auto; z-index:-1; opacity:.55;
+      filter: drop-shadow(0 8px 24px rgba(46,38,27,.08));
+    }
+
+    @media (max-width: 980px){
+      .hero, .inquiry, .grid-3, .steps, .row{grid-template-columns:1fr}
+    }
+    @media (prefers-reduced-motion:no-preference){
+      .btn-primary{transition: transform .08s ease}
+      .btn-primary:active{transform: translateY(1px)}
+      .scroll-down{transition: opacity .2s ease}
+      .scroll-down:hover{opacity:.8}
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="wrap">
     <header>
       <div class="brand">
-        <div class="logo">CC</div>
+        <div class="logo" aria-hidden="true" title="Community Credits">
+          <!-- Simple leaf mark -->
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20 7c-5.5 0-9.5 2.5-12 7 1-6 5-10 12-12-1 1.5-1.8 3-0 5z" fill="#2F6B3E"/>
+            <path d="M5 19c4-1 7-4 9-8" stroke="#6E5B46" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div>
           <strong style="font-size:18px">Community Credits</strong><br>
-          <span class="muted" style="font-size:13px">Food-only member wallet for local farms & co-ops</span>
+          <span class="muted" style="font-size:13px">A food-only member wallet for local farms & co-ops</span>
         </div>
       </div>
-      <nav class="muted">
-        <a href="#about">About</a>
+      <nav>
+        <a href="#learn">About</a>
         <a href="#how">How it works</a>
         <a href="#inquire">More info</a>
       </nav>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
       <div>
         <span class="pill">Food-only • No cash-out • Transparent reserves</span>
@@ -91,64 +140,84 @@
         <p class="subtitle">Members add credits. They spend them on local food. Farms gain stable, trackable cash flow—backed by a clear reserve policy.</p>
         <div class="cta">
           <a class="btn btn-primary" href="#inquire">Request more info</a>
-          <a class="btn btn-outline" href="#how">See how it works</a>
+          <a class="btn btn-ghost" href="#learn">Scroll to learn more ↓</a>
         </div>
       </div>
-      <div class="card grid-soft" style="padding:20px">
-        <h3 style="margin-top:6px">At a glance</h3>
-        <ul class="muted" style="margin:10px 0 0 18px">
-          <li>Member Wallet credits usable for <strong>eligible local food only</strong></li>
-          <li><strong>80% target reserves</strong>, daily reconciliation, audit trail</li>
-          <li>Optional <strong>reserve-backed working-capital loans</strong> (bank-originated)</li>
-          <li>Plugins for POS/accounting when you’re ready</li>
-        </ul>
-        <p class="legal">Not a bank account. Community Credits is a software platform and ledger. Funds are held by each farm/co-op in its own FBO (“for-benefit-of members”) bank account.</p>
+      <div class="hero-visual">
+        <svg class="hills" width="360" height="240" viewBox="0 0 360 240" aria-hidden="true">
+          <defs>
+            <linearGradient id="soil" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#EADCC8"/>
+              <stop offset="100%" stop-color="#DCC9B1"/>
+            </linearGradient>
+            <linearGradient id="leafy" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3E7C4C"/>
+              <stop offset="100%" stop-color="#6E9D64"/>
+            </linearGradient>
+          </defs>
+          <path d="M0 160 Q 80 120, 180 150 T 360 150 L 360 240 L 0 240 Z" fill="url(#soil)"/>
+          <path d="M0 130 Q 90 90, 180 120 T 360 120 L 360 240 L 0 240 Z" fill="url(#leafy)" opacity=".10"/>
+        </svg>
+        <div class="card gloss">
+          <h3 style="margin:6px 0 6px">At a glance</h3>
+          <ul class="bullets">
+            <li>Member Wallet credits usable for <strong>eligible local food</strong> only</li>
+            <li><strong>80% target reserves</strong>, daily reconciliation, audit trail</li>
+            <li>Optional <strong>reserve-backed working-capital loans</strong> (bank-originated)</li>
+            <li>Optional plugins for POS/accounting when you’re ready</li>
+          </ul>
+          <p class="muted" style="font-size:13px; margin-top:10px">Not a bank account. Community Credits is a software platform and ledger. Funds are held by each farm/co-op in its own FBO (“for-benefit-of members”) bank account.</p>
+        </div>
       </div>
     </section>
 
-    <section id="about" class="features">
-      <div class="feature card">
-        <div class="badge">1</div>
-        <h3>Food-only Wallet</h3>
-        <p class="muted">Members preload credits and redeem them for local food—never for cash. Clear statements and receipts keep trust high.</p>
-      </div>
-      <div class="feature card">
-        <div class="badge">2</div>
-        <h3>Strong Reserves</h3>
-        <p class="muted">Default 80% reserves with nightly sweeps. Policy engine prevents dips; everything reconciles daily.</p>
-      </div>
-      <div class="feature card">
-        <div class="badge">3</div>
-        <h3>Working-Capital Option</h3>
-        <p class="muted">Through a bank partner, farms may borrow up to 40% of their own reserves (business-purpose), while keeping at least 60% on hold.</p>
+    <!-- LEARN / FEATURES -->
+    <section id="learn">
+      <h2 class="section-title">Why communities like it</h2>
+      <p class="muted" style="max-width:760px">It’s simple for members, stabilizing for farms, and transparent for everyone. Credits are food-only, never cash—so dollars stay in the local food economy.</p>
+      <div class="grid-3" style="margin-top:16px">
+        <div class="card p-card">
+          <h3>Food-only Wallet</h3>
+          <p class="muted">Members preload credits and spend on local food—clear statements, no cash-out.</p>
+        </div>
+        <div class="card p-card">
+          <h3>Strong Reserves</h3>
+          <p class="muted">Default 80% reserves with nightly sweeps. Policy engine prevents dips; everything reconciles daily.</p>
+        </div>
+        <div class="card p-card">
+          <h3>Grows with You</h3>
+          <p class="muted">Start with the wallet; add POS/accounting integrations later without changing member experience.</p>
+        </div>
       </div>
     </section>
 
+    <!-- HOW -->
     <section id="how">
-      <h2 style="margin:10px 0 10px">How it works</h2>
-      <div class="steps">
-        <div class="step card">
-          <div class="badge">A</div>
+      <h2 class="section-title">How it works</h2>
+      <div class="steps" style="margin-top:12px">
+        <div class="card step">
+          <div class="badge">1</div>
           <h3>Members Load</h3>
-          <p class="muted">Card/ACH funds settle straight into the farm’s <em>FBO Member Credits</em> bank account. The wallet balance updates instantly.</p>
+          <p class="muted">Card/ACH funds settle directly into the farm’s <em>FBO Member Credits</em> bank account. Wallet balance updates instantly.</p>
         </div>
-        <div class="step card">
-          <div class="badge">B</div>
+        <div class="card step">
+          <div class="badge">2</div>
           <h3>They Buy Food</h3>
-          <p class="muted">Credits auto-apply at checkout (market, online, or POS). Refunds and expirations follow simple, published policies.</p>
+          <p class="muted">Credits auto-apply at checkout online or at market. Refunds/expirations follow simple, published policies.</p>
         </div>
-        <div class="step card">
-          <div class="badge">C</div>
+        <div class="card step">
+          <div class="badge">3</div>
           <h3>You Reconcile</h3>
-          <p class="muted">Nightly sweeps move the non-reserved portion to operating cash; dashboards show reserves and exceptions.</p>
+          <p class="muted">Nightly, the farm moves the non-reserved portion to operating cash; dashboards show reserves and exceptions.</p>
         </div>
       </div>
     </section>
 
+    <!-- INQUIRY -->
     <section id="inquire" class="inquiry">
-      <div class="card" style="padding:22px">
-        <h2 style="margin:8px 0 10px">Let’s bring Community Credits to your region</h2>
-        <p class="muted">Tell us about your farm, co-op, or network. We’ll reply with a short readiness checklist and a 20-min onboarding call link.</p>
+      <div class="card" style="padding:24px">
+        <h2 class="section-title">Bring Community Credits to your region</h2>
+        <p class="muted" style="max-width:560px">Tell us about your farm, co-op, or network. We’ll reply with a readiness checklist and a 20-minute onboarding call link.</p>
         <ul class="muted" style="margin-left:18px">
           <li>Food-only wallet with clear member terms</li>
           <li>80% reserves & daily reconciliation</li>
@@ -158,7 +227,7 @@
       </div>
 
       <form id="inquiryForm" class="card" autocomplete="on" novalidate>
-        <h3 style="margin:6px 0 8px">More Information</h3>
+        <h3 style="margin:10px 0 6px">More Information</h3>
         <div class="row">
           <div>
             <label for="name">Your name</label>
@@ -210,75 +279,59 @@
 
     <footer>
       <div>© <span id="year"></span> Community Credits — All rights reserved.</div>
-      <div class="legal">Created by <strong>Killdeer Financial</strong>. Not a bank. Funds are held by participating farms/co-ops in their own FBO accounts.</div>
+      <div style="margin-top:4px" class="muted">Created by <strong>Killdeer Financial</strong>. Not a bank. Funds are held by participating farms/co-ops in their own FBO accounts.</div>
     </footer>
   </div>
 
   <script>
     // ------- CONFIG -------
-    // The target email is obfuscated (Base64) and set at runtime to keep it "hidden" in the HTML.
-    // To use a forwarding alias instead, replace the string below with your alias, encoded.
-    // Example: atob("YWxpYXNAZXhhbXBsZS5vcmc=") -> "alias@example.org"
-    const ENCODED_EMAIL = "amRlY2s4OEBnbWFpbC5jb20="; // "jdeck88@gmail.com" (obfuscated)
+    // Obfuscated recipient email (Base64). Replace this with a forwarding alias later if you like.
+    const ENCODED_EMAIL = "amRlY2s4OEBnbWFpbC5jb20="; // "jdeck88@gmail.com"
     // ----------------------
+
+    const yearEl = document.getElementById('year');
+    yearEl.textContent = new Date().getFullYear();
 
     const formEl = document.getElementById('inquiryForm');
     const successEl = document.getElementById('success');
     const errorEl = document.getElementById('error');
-    const yearEl = document.getElementById('year');
-    yearEl.textContent = new Date().getFullYear();
-
-    function encodeForm(data) {
-      const pairs = [];
-      for (const [k,v] of data.entries()) {
-        pairs.push(encodeURIComponent(k) + "=" + encodeURIComponent(v));
-      }
-      return pairs.join("&");
-    }
 
     formEl.addEventListener('submit', async (e) => {
       e.preventDefault();
       successEl.style.display = "none";
       errorEl.style.display = "none";
 
-      // Simple client validation
-      const name = formEl.name.value.trim();
-      const email = formEl.email.value.trim();
-      const message = formEl.message.value.trim();
-      if (!name || !email || !message || !formEl.consent.checked) {
+      // quick validation
+      if (!formEl.name.value.trim() || !formEl.email.value.trim() || !formEl.message.value.trim() || !formEl.consent.checked){
         errorEl.textContent = "Please complete the required fields and consent.";
         errorEl.style.display = "block";
         return;
       }
-
-      // Honeypot check
-      if (formEl.website.value) {
-        // Silently succeed for bots
+      if (formEl.website.value){ // honeypot
         successEl.style.display = "block";
         formEl.reset();
         return;
       }
 
-      // Build FormSubmit AJAX endpoint with hidden email
       const toEmail = atob(ENCODED_EMAIL);
       const endpoint = "https://formsubmit.co/ajax/" + toEmail;
 
-      const payload = new FormData(formEl);
-      // Add FormSubmit options
-      payload.append("_subject", "Community Credits — New Inquiry");
-      payload.append("_captcha", "false");
-      payload.append("_template", "table");
+      try{
+        const payload = new FormData(formEl);
+        payload.append("_subject", "Community Credits — New Inquiry");
+        payload.append("_captcha", "false");
+        payload.append("_template", "table");
 
-      try {
         const res = await fetch(endpoint, {
           method: "POST",
           headers: { "Accept": "application/json" },
           body: payload
         });
-        if (!res.ok) throw new Error("Network response was not ok");
+        if(!res.ok) throw new Error("Network error");
+
         successEl.style.display = "block";
         formEl.reset();
-      } catch (err) {
+      }catch(err){
         errorEl.style.display = "block";
       }
     });
