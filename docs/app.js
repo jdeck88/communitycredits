@@ -5,19 +5,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const logo = document.getElementById('brandLogo');
   if (logo) {
-    const svg = 'community-credits-logo.svg';
-    const png = 'community-credits-logo.png';
-
-    // Try SVG first
-    logo.src = svg;
-
-    // If the SVG fails to load, swap to PNG
-    logo.onerror = () => {
-      if (logo.src.includes(svg)) {
-        logo.onerror = null;       // avoid loops
-        logo.src = png;
-      }
-    };
+    logo.src = 'community-credits-logo.png';
+    logo.src = png;
   }
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
